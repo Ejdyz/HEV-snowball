@@ -22,9 +22,10 @@ public class BallController : MonoBehaviour
       dragStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
       rb.velocity = Vector2.zero;
     }
-    Debug.Log("dragStartPos: " + dragStartPos);
+
     if (Input.GetMouseButtonUp(0) && isDragging)
     {
+      Debug.Log("dragStartPos: " + dragStartPos);
       isDragging = false;
       Vector2 dragEndPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
       Vector2 direction = dragEndPos - dragStartPos;
