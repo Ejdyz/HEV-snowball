@@ -1,54 +1,66 @@
+using System;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-  private Vector2 velocity;
   private Rigidbody2D rb;
-  private float size = 9.24f;
-  private Vector2 dragStartPos;
+
+  public float launchPower = 10f;
+  public float sizeIncreaseRate = 0.1f;
+
+  private Vector3 startPosition;
+  private Vector3 endPosition;
   private bool isDragging = false;
+  private bool isLaunched = false;
 
 
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
+
+    rb.velocity = Vector3.zero;
   }
 
   void Update()
   {
-    if (Input.GetMouseButtonDown(0))
+    if (Input.GetMouseButtonDown(1))
     {
+      startPosition = Input.mousePosition;
       isDragging = true;
-      dragStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-      rb.velocity = Vector2.zero;
     }
 
-    if (Input.GetMouseButtonUp(0) && isDragging)
+    if (Input.GetMouseButtonUp(1) && isDragging)
     {
-      Debug.Log("dragStartPos: " + dragStartPos);
+      endPosition = Input.mousePosition;
       isDragging = false;
-      Vector2 dragEndPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-      Vector2 direction = dragEndPos - dragStartPos;
-
-      rb.AddForce(new Vector2(10f, 10f), ForceMode2D.Impulse);
+      LaunchBall();
     }
 
-    // Check if the ball is moving
-    if (GetComponent<Rigidbody2D>().velocity.magnitude > 0.02f)
+    if (isLaunched && rb.velocity != Vector2.zero)
     {
-      // Calculate growth rate based on velocity
-      size += velocity.magnitude * 0.001f;
+      GrowBall();
     }
-    else
-    {
-      // Set growth rate to zero if the ball is not moving
-      size += 0f;
-    }
-    transform.localScale = new Vector3(size, size, 1f);
   }
 
-  void FixedUpdate()
+  void LaunchBall()
   {
-    GetComponent<Rigidbody2D>().velocity = velocity;
+    Vector3 direction = (startPosition - endPosition).normalized;
+    float distance = Vector3.Distance(startPosition, endPosition);
+    Vector2 force = new Vector2(direction.x * distance * launchPower, direction.y * distance * launchPower);
+
+    rb.AddForce(force, ForceMode2D.Impulse);
+    isLaunched = true;
+  }
+
+  void GrowBall()
+  {
+    float ballSpeed = rb.velocity.magnitude;
+    float growthFactor = sizeIncreaseRate * ballSpeed * Time.deltaTime;
+    rb.transform.localScale += new Vector3(growthFactor, growthFactor, 0);
+  }
+
+  private void OnTriggerEnter(Collider other)
+  {
+    Debug.Log("trigger");
   }
 }
