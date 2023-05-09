@@ -68,7 +68,7 @@ public class BallController : MonoBehaviour
   {
     if (rb.transform.localScale.y >= 27.72f)
     {
-      Debug.Log("moc velka holka");
+      //end screen
     }
   }
 
