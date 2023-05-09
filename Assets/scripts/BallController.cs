@@ -40,6 +40,7 @@ public class BallController : MonoBehaviour
     {
       GrowBall();
     }
+    CheckSize();
   }
 
   void LaunchBall()
@@ -59,8 +60,25 @@ public class BallController : MonoBehaviour
     rb.transform.localScale += new Vector3(growthFactor, growthFactor, 0);
   }
 
-  private void OnTriggerEnter(Collider other)
+  void ShrinkBall()
   {
-    Debug.Log("trigger");
+    rb.transform.localScale /= 2;
+  }
+  void CheckSize()
+  {
+    if (rb.transform.localScale.y >= 27.72f)
+    {
+      Debug.Log("moc velka holka");
+    }
+  }
+
+  private void OnCollisionEnter2D(Collision2D collision)
+  {
+    if (collision.gameObject.CompareTag("Bouncer"))
+    {
+      ShrinkBall();
+      // Play wall hit sound effect or other effects if desired
+    }
+
   }
 }
