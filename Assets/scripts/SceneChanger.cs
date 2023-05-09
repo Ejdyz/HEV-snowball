@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
 
-  void endScene()
+  public void endScene()
   {
     SceneManager.LoadScene(6);
 
   }
 
-  void LoadLevel(int SceneId)
+  public void LoadLevel(int SceneId)
   {
     
     SceneManager.LoadScene(SceneId);
@@ -23,7 +23,7 @@ public class SceneChanger : MonoBehaviour
     Application.Quit();
   }
 
-  void changeSceneToStart()
+  public void changeSceneToStart()
   {
     SceneManager.LoadScene(0);
   }
