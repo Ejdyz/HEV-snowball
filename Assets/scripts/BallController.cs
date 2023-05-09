@@ -77,8 +77,26 @@ public class BallController : MonoBehaviour
     if (collision.gameObject.CompareTag("Bouncer"))
     {
       ShrinkBall();
-      // Play wall hit sound effect or other effects if desired
+      // Play wall hit sound effect 
+     
     }
+    if (collision.gameObject.CompareTag("Tree"))
+    {
+      // Play tree hit sound effect
+      //start animation of tree
+    }
+
+    if (collision.gameObject.CompareTag("Fence"))
+    {
+      // Play wall hit sound effect
+    }
+
+    if (collision.gameObject.CompareTag("Finish"))
+    {
+      // End Finish screen
+    }
+
+
 
   }
 }
