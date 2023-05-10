@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class BallController : MonoBehaviour
 {
@@ -9,7 +12,10 @@ public class BallController : MonoBehaviour
 
   public float launchPower = 10f;
   public float sizeIncreaseRate = 0.1f;
-
+  public float scaleTooBig = 40f;
+  public float decelerationRate = 0.5f;
+  public float minimumSpeed = 0.1f;
+  
   private Vector3 startPosition;
   private Vector3 endPosition;
   private bool isDragging = false;
@@ -19,10 +25,7 @@ public class BallController : MonoBehaviour
   [SerializeField] AudioSource BounceSound;
   [SerializeField] AudioSource WinSound;
   [SerializeField] int NextLevelSceneId;
-
-
-
-
+  
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
@@ -48,7 +51,15 @@ public class BallController : MonoBehaviour
     if (isLaunched && rb.velocity != Vector2.zero)
     {
       GrowBall();
+      Vector2 deceleration = rb.velocity * (decelerationRate * Time.deltaTime);
+      rb.velocity -= deceleration;
     }
+
+    if (rb.velocity.magnitude < minimumSpeed)
+    {
+      rb.velocity = Vector2.zero;
+    }
+    
     CheckSize();
   }
 
@@ -75,7 +86,7 @@ public class BallController : MonoBehaviour
   }
   void CheckSize()
   {
-    if (rb.transform.localScale.y >= 40f)
+    if (rb.transform.localScale.y >= scaleTooBig)
     {
       SceneManager.LoadScene(8);
       //end screen
@@ -104,18 +115,13 @@ public class BallController : MonoBehaviour
       // Play wall hit sound effect
     }
 
-    if (collision.gameObject.CompareTag("Finish"))
-    {
-      if (rb.transform.localScale.y <= 25f)
-      {
-        StartCoroutine(changeSceneWithDelay(1, NextLevelSceneId));
-        WinSound.Play();
-      }
-    }
-
-
-
+    if (!collision.gameObject.CompareTag("Finish")) return;
+    if (!(rb.transform.localScale.y <= 25f)) return;
+    
+    StartCoroutine(changeSceneWithDelay(1, NextLevelSceneId));
+    WinSound.Play();
   }
+  
   IEnumerator changeSceneWithDelay(int delayInSeconds, int SceneId)
   {
     yield return new WaitForSeconds(delayInSeconds);
