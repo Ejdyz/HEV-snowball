@@ -21,9 +21,7 @@ public class Portal : MonoBehaviour
     {
         if (!canTeleport || !other.gameObject.CompareTag("Ball")) return;
         
-        Vector2 exitDirection = exitPortal.transform.right * (isBlue ? 1 : -1); 
-        other.transform.position = exitPortal.transform.position + (Vector3)exitDirection; 
-        other.attachedRigidbody.velocity = other.attachedRigidbody.velocity.magnitude * exitDirection; 
+        other.transform.position = exitPortal.transform.position; 
 
         TeleportSound.Play();
             
