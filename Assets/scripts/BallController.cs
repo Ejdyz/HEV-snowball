@@ -15,6 +15,7 @@ public class BallController : MonoBehaviour
   public float scaleTooBig = 40f;
   public float decelerationRate = 0.5f;
   public float minimumSpeed = 0.1f;
+  public float maximumSpeed = 50f;
   
   private Vector3 startPosition;
   private Vector3 endPosition;
@@ -58,6 +59,11 @@ public class BallController : MonoBehaviour
     if (rb.velocity.magnitude < minimumSpeed)
     {
       rb.velocity = Vector2.zero;
+    }
+
+    if (rb.velocity.magnitude > maximumSpeed)
+    {
+      rb.velocity = rb.velocity.normalized * maximumSpeed;
     }
     
     CheckSize();
