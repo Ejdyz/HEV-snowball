@@ -1955,7 +1955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6929474146046594153, guid: d58f55f040a709740b7206a9f8aaf852, type: 3}
       propertyPath: NextLevelSceneId
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6929474146046594154, guid: d58f55f040a709740b7206a9f8aaf852, type: 3}
       propertyPath: m_RootOrder

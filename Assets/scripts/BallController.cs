@@ -75,8 +75,9 @@ public class BallController : MonoBehaviour
   }
   void CheckSize()
   {
-    if (rb.transform.localScale.y >= 45f)
+    if (rb.transform.localScale.y >= 40f)
     {
+      SceneManager.LoadScene(8);
       //end screen
     }
   }
