@@ -1,5 +1,7 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
@@ -12,6 +14,13 @@ public class BallController : MonoBehaviour
   private Vector3 endPosition;
   private bool isDragging = false;
   private bool isLaunched = false;
+
+  [SerializeField] AudioSource CollisionSound;
+  [SerializeField] AudioSource BounceSound;
+  [SerializeField] AudioSource WinSound;
+  [SerializeField] int NextLevelSceneId;
+
+
 
 
   void Start()
@@ -66,7 +75,7 @@ public class BallController : MonoBehaviour
   }
   void CheckSize()
   {
-    if (rb.transform.localScale.y >= 27.72f)
+    if (rb.transform.localScale.y >= 45f)
     {
       //end screen
     }
@@ -77,26 +86,38 @@ public class BallController : MonoBehaviour
     if (collision.gameObject.CompareTag("Bouncer"))
     {
       ShrinkBall();
+      BounceSound.Play();
       // Play wall hit sound effect 
-     
+
     }
     if (collision.gameObject.CompareTag("Tree"))
     {
+      CollisionSound.Play();
       // Play tree hit sound effect
       //start animation of tree
     }
 
     if (collision.gameObject.CompareTag("Fence"))
     {
+      CollisionSound.Play();
       // Play wall hit sound effect
     }
 
     if (collision.gameObject.CompareTag("Finish"))
     {
-      // End Finish screen
+      if (rb.transform.localScale.y <= 25f)
+      {
+        StartCoroutine(changeSceneWithDelay(1, NextLevelSceneId));
+        WinSound.Play();
+      }
     }
 
 
 
+  }
+  IEnumerator changeSceneWithDelay(int delayInSeconds, int SceneId)
+  {
+    yield return new WaitForSeconds(delayInSeconds);
+    SceneManager.LoadScene(SceneId);
   }
 }
