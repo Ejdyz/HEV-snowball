@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
 
+  [SerializeField] AudioSource buttonSound;
   public void endScene()
   {
     SceneManager.LoadScene(6);
@@ -14,10 +15,15 @@ public class SceneChanger : MonoBehaviour
 
   public void LoadLevel(int SceneId)
   {
-    
+    buttonSound.Play();
+    StartCoroutine(changeSceneWithDelay(1, SceneId));
+
+  }
+  IEnumerator changeSceneWithDelay(int delayInSeconds, int SceneId)
+  {
+    yield return new WaitForSeconds(delayInSeconds);
     SceneManager.LoadScene(SceneId);
   }
-
   public void exit()
   {
     Application.Quit();
