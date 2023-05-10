@@ -7,6 +7,7 @@ TagManager:
   - Bouncer
   - Tree
   - Fence
+  - Ball
   layers:
   - Default
   - TransparentFX
