@@ -12,6 +12,24 @@ EditorBuildSettings:
     path: Assets/Scenes/LeverPicker.unity
     guid: 473759aef78ce2c4aa7e35d98087d1d3
   - enabled: 1
-    path: Assets/Scenes/game.unity
+    path: Assets/Scenes/Tutorial.unity
     guid: 42eaeb7877a44bb438d5fb4fbf36ffa3
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 178a43865b28af74f8bcda1c079d4777
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: ee6d685f12283154ebe3820086e2153c
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 8e99385fd5a57c94daa5056798037856
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 90dd1d31b769d034dbd0e90216a35540
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: 9a7f46049b8a10349adf0351e014b46b
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: b1184616b833d8544b7c109735875847
   m_configObjects: {}
