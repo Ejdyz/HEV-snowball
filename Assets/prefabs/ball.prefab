@@ -178,11 +178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657121c43235dc548aa33c8c5f5a198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchPower: 1
+  launchPower: 0.8
   sizeIncreaseRate: 0.1
   CollisionSound: {fileID: 8254510185690548369}
   BounceSound: {fileID: 5441976588872297615}
   WinSound: {fileID: 2817007800759998280}
+  NextLevelSceneId: 0
 --- !u!50 &8594675914758269930
 Rigidbody2D:
   serializedVersion: 4
@@ -198,7 +199,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -213,13 +214,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 6929474146046594166}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4dc739ceddc67c145b304263d4fe6596, type: 2}
+  m_Material: {fileID: 6200000, guid: 97dc8670ad584db46a2a8dfd88575897, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.1924338
 --- !u!1 &6929474146302544814
 GameObject:
   m_ObjectHideFlags: 0
