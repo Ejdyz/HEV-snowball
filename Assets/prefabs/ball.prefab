@@ -180,6 +180,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPower: 0.8
   sizeIncreaseRate: 0.1
+  scaleTooBig: 40
+  decelerationRate: 0.5
+  minimumSpeed: 0.1
+  maximumSpeed: 50
   CollisionSound: {fileID: 8254510185690548369}
   BounceSound: {fileID: 5441976588872297615}
   WinSound: {fileID: 2817007800759998280}
