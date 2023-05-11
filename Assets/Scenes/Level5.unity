@@ -211,7 +211,7 @@ Transform:
   - {fileID: 1741895994}
   - {fileID: 988596166}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -33.479}
 --- !u!1001 &36345897
 PrefabInstance:
@@ -627,7 +627,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &142870216
 PrefabInstance:
@@ -1247,7 +1247,7 @@ Transform:
   - {fileID: 1595529719}
   - {fileID: 654327951}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.598}
 --- !u!1001 &654327950
 PrefabInstance:
@@ -2366,7 +2366,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6929474146046594153, guid: d58f55f040a709740b7206a9f8aaf852, type: 3}
       propertyPath: NextLevelSceneId
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6929474146046594154, guid: d58f55f040a709740b7206a9f8aaf852, type: 3}
       propertyPath: m_RootOrder
